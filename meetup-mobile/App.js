@@ -1,11 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { fetchMeetups } from './constants/api';
 
 export default class App extends React.Component {
+
+  static defaultProps = {
+    fetchMeetups
+  }
+
+  state = {
+    loading: false,
+    meetups: []
+  }
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+    const data = await this.props.fetchMeetups();
+    setTimeout(() => this.setState({ loading: false, meetups: data.meetups }), 500)
+  }
+
   render() {
+    if (this.state.loading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" />
+        </View>
+      )
+    }
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Meet up
+        </Text>
+        {this.state.meetups.map((meetup, i) => (
+          <Text key={i}>{meetup.title}</Text>
+        ))}
       </View>
     );
   }
