@@ -1,12 +1,17 @@
 import React from 'react';
-import EStyleSheet from 'react-native-extended-stylesheet';
+import { Text, View } from 'react-native';
 import Colors from './constants/Colors';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import { HomeScreen } from './src/screens';
 
-EStyleSheet.build(Colors);
+EStyleSheet.build(Colors)
+
 
 export default class App extends React.Component {
-
+  state = { }
   render() {
-    return <HomeScreen />
+    return (
+      <HomeScreen />
+    )
   }
 }
