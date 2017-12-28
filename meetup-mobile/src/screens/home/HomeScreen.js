@@ -27,7 +27,12 @@ class HomeScreen extends Component {
     }
     return (
       <View style={styles.root}>
-        <Text>HomeScreen</Text>
+        <View style={styles.topContainer}>
+          <Text>HomeScreen</Text>
+        </View>
+        <View style={styles.bottomContainer}>
+
+        </View>
       </View>
     );
   }
